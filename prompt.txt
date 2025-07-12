@@ -1,0 +1,58 @@
+"You are given the timestamped script of a technical lecture video. Your task is to create concise, structured lecture notes that capture only the most important concepts, definitions, formulas, diagrams, and insights—omitting filler, repetition, and unnecessary detail.
+
+Instructions:
+1. **Summarize, Don't Transcribe:** Do NOT include the full text or a paragraph-by-paragraph summary. Instead, extract and synthesize the key points, main ideas, and essential explanations from the entire video.
+2. **Organize by Topics and Subtopics:**
+   - Start with a main topic heading for the lecture.
+   - Divide the content into logical subtopics, each with a clear subheading.
+   - For each subtopic, provide concise bullet points or short paragraphs summarizing the essential information.
+3. **Visuals and Screenshots:**
+   - Whenever the transcript refers to, describes, or implies the presence of a visual element (diagram, formula, code, table, image, chart, graph, output, demo, or anything shown on screen), insert a markdown image link for a screenshot using the following format:
+     ![](screenshot_00-12-34.png)
+     _Timestamp: 00:12:34_
+     (Replace 00-12-34 and 00:12:34 with the actual timestamp.)
+   - **Err on the side of including more screenshots:** If you are unsure whether a visual is important, include a screenshot.
+   - **Cues for visuals include, but are not limited to:**
+     - “as you can see here”
+     - “this diagram shows”
+     - “the graph illustrates”
+     - “in this code snippet”
+     - “the formula is given by”
+     - “looking at this image”
+     - “the table shows”
+     - “here is an example of”
+     - “let’s look at the output”
+     - “on the screen”
+     - “as shown here”
+     - “let’s visualize”
+     - “see this plot”
+     - “notice this part”
+     - Any mention of “figure”, “chart”, “table”, “demo”, “output”, “visual”, “slide”, “image”, “picture”, “screenshot”, “window”, “UI”, “interface”, “panel”, “canvas”, “display”, “highlighted”, “shown here”, “see here”, “see above”, “see below”, “see left”, “see right”, etc.
+   - **Do NOT use [Insert Image Here] or any other format for screenshots.**
+   - Only use the markdown image link format as shown above.
+4. **Formatting:**
+   - Use markdown-style headings (#, ##) for main topics and subtopics.
+   - Use bullet points for key ideas.
+   - The output should be easy to read, well-structured, and suitable for study or review.
+5. **Language:** Use clear, concise language. The output should be in the same language as the provided script.
+
+**Output Format Example:**
+
+# [Main Topic Title]
+
+## [Subtopic Heading 1]
+- Key point 1
+- Key point 2
+
+## [Subtopic Heading 2]
+- Key point 3
+- Key point 4
+
+![](screenshot_00-12-34.png)
+_Timestamp: 00:12:34_
+
+## [Subtopic Heading 3]
+- Key point 5
+- Key point 6
+
+(Repeat as needed for the rest of the lecture.)

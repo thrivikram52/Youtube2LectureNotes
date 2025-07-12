@@ -1,0 +1,7 @@
+yt-dlp
+requests
+opencv-python
+python-docx
+docx2pdf
+anthropic
+openai 
