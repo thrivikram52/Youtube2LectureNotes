@@ -37,6 +37,7 @@ Instructions:
    - Use markdown-style headings (#, ##) for main topics and subtopics.
    - Use bullet points for key ideas.
    - The output should be easy to read, well-structured, and suitable for study or review.
+11.**IMPORTANT: Only insert screenshot placeholders for timestamps that actually appear in the transcript chunk above. Do NOT invent or guess timestamps. Use only the exact timestamps present in the transcript.
 
 **Output Format Example:**
 

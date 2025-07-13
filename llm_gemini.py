@@ -13,7 +13,7 @@ def call_gemini_api(transcript_chunk, prompt):
     if not api_key:
         raise ValueError("GEMINI_API_KEY environment variable not set.")
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-2.5-pro")
+    model = genai.GenerativeModel("gemini-2.5-flash")
     # Compose the full prompt
     full_prompt = prompt.replace("{transcript_chunk}", str(transcript_chunk))
     response = model.generate_content(full_prompt)

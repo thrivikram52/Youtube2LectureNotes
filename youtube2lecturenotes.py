@@ -83,8 +83,10 @@ def capture_screenshots(video_path, timestamps, out_dir):
             print(f"Warning: Could not capture frame at {ts}")
     cap.release()
 
-def save_final_markdown(llm_outputs, out_path):
+def save_final_markdown(llm_outputs, out_path, video_url=None):
     with open(out_path, "w", encoding="utf-8") as f:
+        if video_url:
+            f.write(f"[Watch the original video]({video_url})\n\n")
         f.write("\n".join(llm_outputs))
 
 def get_llm_outputs(transcript_chunks, prompt, llm_type, work_dir):
@@ -139,11 +141,11 @@ def main(youtube_url: str):
     print(f"Found {len(timestamps)} screenshots to capture.")
     capture_screenshots(video_path, timestamps, work_dir)
     final_md_path = os.path.join(work_dir, "final.md")
-    save_final_markdown(llm_outputs, final_md_path)
+    save_final_markdown(llm_outputs, final_md_path, youtube_url)
     pdf_path = os.path.join(work_dir, "lecture_notes.pdf")
     print("Converting markdown to PDF with Pandoc...")
     try:
-        subprocess.run(["pandoc", "final.md", "-o", "lecture_notes.pdf"], check=True, cwd=work_dir)
+        subprocess.run(["pandoc", "final.md", "-o", "lecture_notes.pdf", "--pdf-engine=xelatex"], check=True, cwd=work_dir)
         print(f"Done! PDF saved at: {pdf_path}")
     except Exception as e:
         print(f"Pandoc conversion failed: {e}")
