@@ -1,7 +1,8 @@
+openai
+anthropic
+google-generativeai
+opencv-python
 yt-dlp
 requests
-opencv-python
 python-docx
-docx2pdf
-anthropic
-openai 
+docx2pdf 

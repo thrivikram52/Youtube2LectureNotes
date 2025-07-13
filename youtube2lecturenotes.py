@@ -5,8 +5,10 @@ import subprocess
 import cv2
 from llm_openai import call_openai_api
 from llm_claude import call_claude_api
+from llm_gemini import call_gemini_api
 
-LLM = "claude"  # or "openai"
+LLM = "claude"  # or "openai" or "gemini" or "claude"
+CONTENT_TYPE = "short"  # or "long"
 
 def download_youtube_transcript_and_video(youtube_url: str, out_dir: str):
     os.makedirs(out_dir, exist_ok=True)
@@ -104,8 +106,16 @@ def get_llm_outputs(transcript_chunks, prompt, llm_type, work_dir):
             with open(chunk_file, "w", encoding="utf-8") as f:
                 f.write(llm_output)
             llm_outputs.append(llm_output)
+    elif llm_type == "gemini":
+        for i, chunk in enumerate(transcript_chunks):
+            print(f"Calling Gemini API for chunk {i+1}/{len(transcript_chunks)}...")
+            llm_output = call_gemini_api(chunk, prompt)
+            chunk_file = os.path.join(work_dir, f"llm_response_chunk{i+1}.txt")
+            with open(chunk_file, "w", encoding="utf-8") as f:
+                f.write(llm_output)
+            llm_outputs.append(llm_output)
     else:
-        raise ValueError("LLM must be 'openai' or 'claude'")
+        raise ValueError("LLM must be 'openai', 'claude', or 'gemini'")
     return llm_outputs
 
 def main(youtube_url: str):
@@ -113,7 +123,8 @@ def main(youtube_url: str):
     if os.path.exists(work_dir):
         shutil.rmtree(work_dir)
     os.makedirs(work_dir, exist_ok=True)
-    prompt_path = os.path.join(os.path.dirname(__file__), "prompt.txt")
+    prompt_filename="prompt.txt"
+    prompt_path = os.path.join(os.path.dirname(__file__), prompt_filename)
     with open(prompt_path, "r", encoding="utf-8") as f:
         prompt = f.read()
     print(f"Working directory: {work_dir}")
