@@ -7,7 +7,7 @@ from llm_openai import call_openai_api
 from llm_claude import call_claude_api
 from llm_gemini import call_gemini_api
 
-LLM = "gemini"  # or "openai" or "gemini" or "claude"
+LLM = "claude"  # or "openai" or "gemini" or "claude"
 
 def download_youtube_transcript_and_video(youtube_url: str, out_dir: str):
     os.makedirs(out_dir, exist_ok=True)

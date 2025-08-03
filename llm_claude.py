@@ -10,7 +10,7 @@ def call_claude_api(transcript_segments: List[Tuple[str, str]], prompt: str) -> 
     CLAUDE_API_KEY = os.getenv("ANTHROPIC_API_KEY") or os.getenv("CLAUDE_API_KEY")
     client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
     message = client.messages.create(
-        model="claude-3-opus-latest",
+        model="claude-4-sonnet-20250514",
         max_tokens=4096,
         temperature=1,
         system="You are a helpful assistant that processes lecture transcripts into structured notes.",
